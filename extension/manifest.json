@@ -1,7 +1,7 @@
   {
-    "name": "ExtName",
+    "name": "Talend Github PR Jira linker",
     "version": "0.1.1",
-    "description": "Desc",
+    "description": "This extension is a helper which adds a link for Talend's PRs to the Jira if possible",
 
     "manifest_version": 3,
     "author": "Lim",
@@ -16,5 +16,19 @@
         "32": "icons/TalGJ_32.png",
         "64": "icons/TalGJ_64.png",
         "128": "icons/TalGJ_128.png"
-    }
+    },
+    
+    "content_scripts": [
+       {
+         "matches": ["https://github.com/Talend/*/pull/*"],
+         "js": ["controls/control.js"]
+       }
+    ],
+	
+	"web_accessible_resources": [
+	{
+	"resources": ["icons/TalJ_16.png"],
+	"matches": []
+	}
+	]
 }
