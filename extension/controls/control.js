@@ -14,12 +14,11 @@ function addJiraLink() {
 		
 		if (jiraIdFound == null) return;
 		
-		var jiraId = jiraIdFound.replaceAll("/", "").replaceAll("_", "");
+		var jiraId = jiraIdFound.replaceAll("/", "").replaceAll("_", "").replace(/-$/, "");
 		
 		var nodeButton = document.createElement("img");
 		
 		targetDiv.appendChild(createImageButton(jiraId));
-		//console.log(createImageButton(jiraId));
 	} else {
 		return;
 	}
@@ -28,7 +27,7 @@ function addJiraLink() {
 
 
 function getJiraID(branchName) {
-	const regex = /\/[A-Z,a-z]{3,}-\d{2,}(_|\/|$)/g;
+	const regex = /(\/|-|_)[A-Z,a-z]{3,}-\d{2,}(_|-|\/|$)/g;
 	return branchName.match(regex);
 	
 }
