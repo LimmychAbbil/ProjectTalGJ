@@ -35,6 +35,7 @@ function getJiraID(branchName) {
 function createImageButton(branchName) {
 	var nodeButton = document.createElement("a");
 	nodeButton.href = "https://jira.talendforge.org/browse/" + branchName;
+	nodeButton.style = "vertical-align: middle";
 	var imgNode = document.createElement("img");
 	imgNode.src = chrome.runtime.getURL('icons/TalJ_16.png');
 	
