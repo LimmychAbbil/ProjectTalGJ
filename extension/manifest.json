@@ -1,6 +1,6 @@
   {
     "name": "Talend Github PR Jira linker",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "description": "This extension is a helper which adds a link for Talend's PRs to the Jira if possible",
 
     "manifest_version": 3,
@@ -8,7 +8,7 @@
 
     "permissions": [],
     "host_permissions": [
-        "http://github.com/Talend/*/pull/*"
+        "*://github.com/Talend/*/pull/*"
     ],
 
     "icons": {
@@ -20,19 +20,25 @@
     
     "content_scripts": [
        {
-         "matches": ["https://github.com/Talend/*/pull/*"],
-         "js": ["controls/handlePR.js"]
+         "matches": ["*://github.com/Talend/*/pull/*"],
+         "js": ["controls/handlePR.js"],
+         "run_at": "document_idle"
        },
-	   {
-		  "matches": ["https://github.com/Talend/*/commit/*"],
-		  "js": ["controls/handleCommit.js"]
-		}
+       {
+          "matches": ["*://github.com/Talend/*/commit/*"],
+          "js": ["controls/handleCommit.js"],
+          "run_at": "document_idle"
+        }
     ],
-	
-	"web_accessible_resources": [
-	{
-		"resources": ["icons/TalJ_16.png"],
-		"matches": ["<all_urls>"]
-	}
-	]
+    
+    "web_accessible_resources": [
+    {
+        "resources": ["icons/TalJ_16.png"],
+        "matches": ["<all_urls>"]
+    },
+    {
+        "resources": ["icons/QlkJ_16.png"],
+        "matches": ["<all_urls>"]
+    }
+    ]
 }
