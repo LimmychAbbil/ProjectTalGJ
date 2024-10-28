@@ -1,8 +1,5 @@
-
-addJiraLink();
-
-function addJiraLink() {
-    var divsWithCommitMessage = document.getElementsByClassName("commit-title markdown-title");
+function addJiraLinkToCommit() {
+    var divsWithCommitMessage = document.getElementsByClassName("CommitHeader-module__commit-message-container--nl1pf");
     if (divsWithCommitMessage.length >= 1) {
         var commitMessage = divsWithCommitMessage[0].textContent;
         
@@ -20,22 +17,12 @@ function addJiraLink() {
     }
 }
 
-
-
 function getJiraID(commitMessage) {
     const regex = /\([A-Z,a-z]{3,}-\d{2,}\)/g;
     return commitMessage.match(regex);
     
 }
 
-function createImageButton(ticketName) {
-    var nodeButton = document.createElement("a");
-    nodeButton.href = "https://jira.talendforge.org/browse/" + ticketName;
-    nodeButton.style = "vertical-align: middle";
-    var imgNode = document.createElement("img");
-    imgNode.src = chrome.runtime.getURL('icons/TalJ_16.png');
-    
-    nodeButton.appendChild(imgNode);
-    
-    return nodeButton;
+if (window.location.pathname.includes("/commit/")) {
+    addJiraLinkToCommit();
 }

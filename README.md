@@ -1,5 +1,5 @@
 # ProjectTalGJ
-Chrome extension for Talend devs
+Chrome extension for Qlik-Talend devs
 
 ### Installation for Chrome 88+
 Just install latest released version from the [Chrome store](https://chrome.google.com/webstore/detail/talend-github-pr-jira-lin/nffjallbcadjpedimdkegbpmakjpnhlf)

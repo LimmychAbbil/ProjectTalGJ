@@ -1,15 +1,16 @@
   {
     "name": "Talend Github PR Jira linker",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "This extension is a helper which adds a link for Talend's PRs to the Jira if possible",
 
     "manifest_version": 3,
     "author": "Lim",
 
-    "permissions": [],
+    "permissions": ["scripting", "webNavigation"],
     "host_permissions": [
         "*://github.com/Talend/*/pull/*"
     ],
+    "action": {},
 
     "icons": {
         "16": "icons/TalGJ_16.png",
@@ -17,28 +18,26 @@
         "64": "icons/TalGJ_64.png",
         "128": "icons/TalGJ_128.png"
     },
-    
+
     "content_scripts": [
        {
          "matches": ["*://github.com/Talend/*/pull/*"],
-         "js": ["controls/handlePR.js"],
+         "js": ["controls/commonTalGJ.js", "controls/handlePR.js"],
          "run_at": "document_idle"
        },
        {
           "matches": ["*://github.com/Talend/*/commit/*"],
-          "js": ["controls/handleCommit.js"],
+          "js": ["controls/commonTalGJ.js", "controls/handleCommit.js"],
           "run_at": "document_idle"
         }
     ],
-    
-    "web_accessible_resources": [
-    {
-        "resources": ["icons/TalJ_16.png"],
-        "matches": ["<all_urls>"]
+
+    "background": {
+        "service_worker": "background/background.js"
     },
-    {
-        "resources": ["icons/QlkJ_16.png"],
+
+    "web_accessible_resources": [{
+        "resources": ["icons/TalJ_16.png", "icons/QlkJ_16.png", "controls/commonTalGJ.js", "controls/handlePR.js"],
         "matches": ["<all_urls>"]
-    }
-    ]
+    }]
 }
