@@ -1,7 +1,3 @@
-const talendJiraURL = "https://jira.talendforge.org/browse/";
-const qlikJiraURL = "https://qlik-dev.atlassian.net/browse/";
-const migrationDate = new Date("2024-10-25");
-
 function getCreatedDate() {
     var prHeaderElement = document.getElementsByClassName("timeline-comment-header clearfix d-flex");
     if (prHeaderElement.length >= 1) {
@@ -13,8 +9,14 @@ function getCreatedDate() {
 }
 
 function createImageButton(ticketName) {
+    var talendJiraURL = "https://jira.talendforge.org/browse/";
+    var qlikJiraURL = "https://qlik-dev.atlassian.net/browse/";
+    var migrationDate = new Date("2024-10-25");
+
     var nodeButton = document.createElement("a");
+    nodeButton.id = "TalGJ_link";
     nodeButton.style = "vertical-align: middle";
+    nodeButton.target="_blank";
     var imgNode = document.createElement("img");
     if (getCreatedDate() < migrationDate || (ticketName.startsWith("TDI") || ticketName.startsWith("TUP"))) {
         imgNode.src = chrome.runtime.getURL('icons/TalJ_16.png');

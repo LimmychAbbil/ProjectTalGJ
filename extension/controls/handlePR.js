@@ -4,6 +4,11 @@ function addJiraLinkToPR() {
     var targetDiv = null;
     if (divLinesWithBranches.length >= 1) {
         targetDiv = divLinesWithBranches[0];
+        var alreadyAddedJiraLinks = document.getElementById("TalGJ_link");
+
+        if (alreadyAddedJiraLinks != null) {
+            return;
+        }
         var divWithBranchName = targetDiv.getElementsByClassName("commit-ref css-truncate user-select-contain expandable head-ref")[0];
         
         var branchName = divWithBranchName.textContent;
@@ -13,10 +18,7 @@ function addJiraLinkToPR() {
         if (jiraIdFound == null) return;
         
         var jiraId = jiraIdFound.replaceAll("/", "").replaceAll("_", "").replace(/-$/, "");
-        
-        var nodeButton = document.createElement("img");
 
-        var jiraURL = 
         targetDiv.appendChild(createImageButton(jiraId));
     } else {
         return;
