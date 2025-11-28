@@ -9,7 +9,7 @@ function getCreatedDate() {
 }
 
 function createImageButton(ticketName) {
-    var talendJiraURL = "https://jira.talendforge.org/browse/";
+    var talendJiraURL = "https://talend-jira-dc-legacy.atlassian.net/browse/";
     var qlikJiraURL = "https://qlik-dev.atlassian.net/browse/";
     var migrationDate = new Date("2024-10-25");
 

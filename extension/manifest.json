@@ -1,6 +1,6 @@
   {
     "name": "Talend Github PR Jira linker",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "This extension is a helper which adds a link for Talend's PRs to the Jira if possible",
 
     "manifest_version": 3,
